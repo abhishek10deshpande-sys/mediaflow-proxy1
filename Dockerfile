@@ -1,5 +1,5 @@
 # Stage 1: Build stage with all compilation dependencies
-FROM python:3.14-slim AS builder
+FROM python:3.13-slim AS builder
 
 # Set work directory
 WORKDIR /build
@@ -37,7 +37,7 @@ COPY pyproject.toml uv.lock* /build/
 RUN uv sync --frozen --no-install-project --no-dev
 
 # Stage 2: Runtime stage (minimal image)
-FROM python:3.14-slim
+FROM python:3.13-slim
 
 # Set environment variables
 ENV PYTHONDONTWRITEBYTECODE="1"
